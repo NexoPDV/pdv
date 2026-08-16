@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte e Automação Soares | Gestão de Dados e Suporte Operacional</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0F4C81;
+            --primary-dark: #0A3357;
+            --secondary: #00A896;
+            --accent: #F4A261;
+            --bg-light: #F8FAFC;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .btn-header {
+            background: var(--secondary);
+            color: white !important;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            transition: transform 0.2s, background 0.3s !important;
+        }
+
+        .btn-header:hover {
+            background: #008678 !important;
+            transform: translateY(-2px);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 10rem 0 5rem 0;
+            background: linear-gradient(135deg, #0f4c810a 0%, #00a8960a 100%);
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 168, 150, 0.1);
+            color: var(--secondary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #25D366;
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #1eb956;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid #E2E8F0;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: #F1F5F9;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 4px solid var(--white);
+        }
+
+        .founders-tag {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        /* --- Problem / Solution Section --- */
+        .problem-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .card-problem {
+            background: #FFF5F5;
+            border: 1px solid #FED7D7;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+        }
+
+        .card-problem h3 {
+            color: #E53E3E;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-solution {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+        }
+
+        .card-solution h3 {
+            color: #16A34A;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check-list {
+            list-style: none;
+        }
+
+        .check-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        /* --- Services Section --- */
+        .services-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: all 0.3s;
+            text-align: center;
+            border: 1px solid #E2E8F0;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: var(--secondary);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- Team / Founders Section --- */
+        .about-section {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .founders-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .founder-box {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .founder-box h4 {
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+        }
+
+        .founder-box p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* --- Free Trial Banner --- */
+        .cta-banner {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-banner p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-dark);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .btn-white:hover {
+            background: var(--bg-light);
+            transform: scale(1.05);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #0B192C;
+            color: white;
+            padding: 3rem 0 1.5rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-socials a {
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            transition: color 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* --- WhatsApp Floating Button --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #1eb956;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-grid, .comparison-grid, .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .founders-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo-text">
+                <i class="fa-solid fa-gears"></i> Suporte & Automação <span>Soares</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#problema">Soluções</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#sobre">Quem Somos</a></li>
+                <li><a href="https://wa.me/5522999654314?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20teste%20gratuito." class="btn-header"><i class="fa-brands fa-whatsapp"></i> Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <span class="hero-badge"><i class="fa-solid fa-rocket"></i> Gestão de Dados & Operações</span>
+                <h1 class="hero-title">Sua empresa cresce, nós cuidamos das tarefas repetitivas!</h1>
+                <p class="hero-subtitle">Somos o seu suporte operacional especializado. Assumimos rotinas administrativas e automatizamos processos para você focar na estratégia e no faturamento do seu negócio.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/5522999654314?text=Olá!%20Quero%20solicitar%20um%20orçamento!" class="btn-primary" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Solicite um Orçamento
+                    </a>
+                    <a href="#servicos" class="btn-secondary">Conheça Nossos Serviços</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="https://lh3.googleusercontent.com/d/1gqTSPp29Ze1erJx4xA-f_LywbCaopMwP" alt="Orlando e Mayara - Suporte e Automação Soares" class="hero-img">
+                <div class="founders-tag">
+                    <i class="fa-solid fa-user-check" style="color: var(--secondary);"></i>
+                    Orlando & Mayara • Fundadores
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem vs Solution Section -->
+    <section class="problem-section" id="problema">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sua empresa está perdendo tempo precioso?</h2>
+                <p>Tarefas manuais e desorganização de dados travam o crescimento do seu negócio. Veja a diferença que fazemos:</p>
+            </div>
+            
+            <div class="comparison-grid">
+                <!-- Problema -->
+                <div class="card-problem">
+                    <h3><i class="fa-solid fa-circle-xmark"></i> ANTES (Sem Suporte Soares)</h3>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-xmark" style="color: #E53E3E;"></i> Horas gastas preenchendo planilhas e cadastros manualmente.</li>
+                        <li><i class="fa-solid fa-xmark" style="color: #E53E3E;"></i> Dados dispersos e falta de controle das informações.</li>
+                        <li><i class="fa-solid fa-xmark" style="color: #E53E3E;"></i> Sobrecarga de trabalho administrativo e estresse diário.</li>
+                        <li><i class="fa-solid fa-xmark" style="color: #E53E3E;"></i> Foco desviado das vendas e da estratégia do negócio.</li>
+                    </ul>
+                </div>
+
+                <!-- Solução -->
+                <div class="card-solution">
+                    <h3><i class="fa-solid fa-circle-check"></i> DEPOIS (Com Suporte Soares)</h3>
+                    <ul class="check-list">
+                        <li><i class="fa-solid fa-check" style="color: #16A34A;"></i> Processos automatizados e rotinas ágeis.</li>
+                        <li><i class="fa-solid fa-check" style="color: #16A34A;"></i> Dados organizados, estruturados e fáceis de analisar.</li>
+                        <li><i class="fa-solid fa-check" style="color: #16A34A;"></i> Mais tempo livre para você e sua equipe focarem no cliente.</li>
+                        <li><i class="fa-solid fa-check" style="color: #16A34A;"></i> Suporte humanizado, eficiente e de alta qualidade.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <h2>O Que Podemos Fazer Pela Sua Empresa?</h2>
+                <p>Oferecemos um leque completo de soluções operacionais sob medida para pequenas e médias empresas.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-table-cells"></i></div>
+                    <h3>Planilhas e Dados</h3>
+                    <p>Organização, estruturação e alimentação de planilhas complexas com rapidez e precisão para tomada de decisão.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-id-card"></i></div>
+                    <h3>Cadastros Operacionais</h3>
+                    <p>Manutenção e atualização de cadastros de clientes, fornecedores e parceiros no seu sistema ou CRM.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-box-open"></i></div>
+                    <h3>Gestão de Produtos</h3>
+                    <p>Cadastro detalhado de produtos, controle de estoques e atualização de catálogos para e-commerce e lojas físicas.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <h3>Pesquisas & Levantamento</h3>
+                    <p>Mapeamento de preços, concorrentes, fornecedores e oportunidades de mercado organizados de forma clara.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
+                    <h3>Automação de Rotinas</h3>
+                    <p>Implementação de rotinas inteligentes para eliminar processos manuais e repetitivos no seu dia a dia.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h3>Suporte Administrativo</h3>
+                    <p>Atendimento e execução de tarefas administrativas com máxima eficiência, responsabilidade e confidencialidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="sobre">
+        <div class="container about-grid">
+            <div>
+                <img src="https://lh3.googleusercontent.com/d/1gqTSPp29Ze1erJx4xA-f_LywbCaopMwP" alt="Orlando e Mayara" style="width: 100%; border-radius: 20px; box-shadow: var(--shadow);">
+            </div>
+            <div class="about-text">
+                <h2>Conheça a Suporte e Automação Soares</h2>
+                <p>Somos movidos por um objetivo claro: <strong>liberar o potencial das empresas eliminando o gargalo operacional</strong>. Entendemos que empresários não devem gastar horas valiosas lidando com planilhas confusas e tarefas operacionais diárias.</p>
+                <p>Liderada por <strong>Orlando</strong> e <strong>Mayara</strong>, a nossa empresa une expertise em gestão de dados, suporte administrativo e automação para trazer tranquilidade e eficiência ao seu negócio.</p>
+
+                <div class="founders-cards">
+                    <div class="founder-box">
+                        <h4>Orlando</h4>
+                        <p>Especialista em automação de processos, gestão de dados e otimização de fluxos operacionais.</p>
+                    </div>
+                    <div class="founder-box">
+                        <h4>Mayara</h4>
+                        <p>Especialista em suporte administrativo, organização de informações e gestão operacional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Free Trial Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Você cuida do negócio. Nós cuidamos da operação!</h2>
+            <p>Conheça nossas soluções e descubra como podemos transformar a rotina da sua empresa hoje mesmo.</p>
+            <a href="https://wa.me/5522999654314?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20teste%20gratuito!" class="btn-white" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Fale Conosco no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo-text" style="color: white;">
+                    <i class="fa-solid fa-gears" style="color: var(--secondary);"></i> Suporte e Automação Soares
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/share/1UjcYCythx" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://instagram.com/suporteeautomacaosoares" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="mailto:suporteeautomacaosoares@gmail.com" title="E-mail"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 Suporte e Automação Soares - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5522999654314?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento." class="whatsapp-float" target="_blank" title="Fale conosco no WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
